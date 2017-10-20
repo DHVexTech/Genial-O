@@ -3,7 +3,7 @@
     <b-nav-toggle target="nav_collapse"></b-nav-toggle>
       <b-collapse is-nav id="nav_collapse">
         <b-nav is-nav-bar>
-          <b-nav-item @click="BackMenu()">Génial-O</b-nav-item>
+          <b-nav-item @click="BackToTheFirstMenu()">Génial-O</b-nav-item>
           <b-nav-item @click="showModal">{{this.FinalText}}</b-nav-item>
         </b-nav>
     </b-collapse>
@@ -37,30 +37,35 @@ export default {
     ...mapGetters([
       'Count',
       'Manual',
-      'Auto'
+      'Auto',
+      'GetConnectToRobot'
     ]),
     ...mapMutations([
       'Increment',
       'SetBoolAuto',
-      'SetBoolManual'
+      'SetBoolManual',
+      'SetConnectToRobot'
 
     ]),
-    BackMenu(event){
+    BackToTheFirstMenu(event){
       if(this.Auto()) this.SetBoolAuto();
       if(this.Manual()) this.SetBoolManual();
     },
     Boot(event) {
-      this.OnOff = !this.OnOff
-      if(this.OnOff){ this.FinalText = this.TextOn } else { this.FinalText = this.TextOff}
+      this.SetConnectToRobot();
+      if(this.GetConnectToRobot()){ this.FinalText = this.TextOn } else { this.FinalText = this.TextOff}
+      console.log("CONNECT ROBOT : "+this.GetConnectToRobot());
     },
     showModal() {
-    if(this.OnOff) this.$refs.myModalRef.show(); else this.Boot();
+    if(this.GetConnectToRobot()) this.$refs.myModalRef.show(); else this.Boot();
     },
     hideModal(bool) {
       this.$refs.myModalRef.hide();
-      if(bool) this.Boot();
+      if(bool){
+        this.Boot();
+        this.BackToTheFirstMenu();
+      } 
     }
-
   }
 }
 </script>
