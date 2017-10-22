@@ -4,7 +4,7 @@
       <b-collapse is-nav id="nav_collapse">
         <b-nav is-nav-bar>
           <b-nav-item @click="BackToTheFirstMenu()">Génial-O</b-nav-item>
-          <b-nav-item @click="showModal">{{this.FinalText}}</b-nav-item>
+          <b-nav-item @click="showModal">{{this.UpdateText}}</b-nav-item>
         </b-nav>
     </b-collapse>
       <div>
@@ -17,8 +17,6 @@
         </b-modal>
       </div>
   </b-navbar>
-
-    
 </template>
 
 <script>
@@ -27,45 +25,46 @@ export default {
   name: 'Nav',
   data () {
     return {
-      OnOff : false,
-      TextOn : "Se déconnecter du robot",
-      TextOff : "Se connecter au robot",
-      FinalText: "Se connecter au robot"
     }
   }, 
-  methods:{
-    ...mapGetters([
-      'Count',
-      'Manual',
-      'Auto',
-      'GetConnectToRobot'
-    ]),
-    ...mapMutations([
-      'Increment',
-      'SetBoolAuto',
-      'SetBoolManual',
-      'SetConnectToRobot'
+  watch:{
 
+  },
+  created(){
+  },
+  computed: {
+    ...mapGetters([
+      'GetConnectToRobot',
+      'Auto',
+      'Manual'
     ]),
-    BackToTheFirstMenu(event){
-      if(this.Auto()) this.SetBoolAuto();
-      if(this.Manual()) this.SetBoolManual();
+    UpdateText: function() {
+      if(this.GetConnectToRobot) return "Se déconnecter du robot"; else return "Se connecter au robot";
+    }
+  },
+  methods:{
+    ...mapMutations([
+      'SetConnectToRobot',
+      'SetBoolAuto',
+      'SetBoolManual'
+    ]),
+    BackToTheFirstMenu(){
+      if(this.Auto) this.SetBoolAuto();
+      if(this.Manual) this.SetBoolManual();
     },
-    Boot(event) {
+    Boot() {
       this.SetConnectToRobot();
-      if(this.GetConnectToRobot()){ this.FinalText = this.TextOn } else { this.FinalText = this.TextOff}
-      console.log("CONNECT ROBOT : "+this.GetConnectToRobot());
     },
     showModal() {
-    if(this.GetConnectToRobot()) this.$refs.myModalRef.show(); else this.Boot();
+      if(this.GetConnectToRobot)
+        this.$refs.myModalRef.show();
+      else 
+        this.Boot();
     },
     hideModal(bool) {
       this.$refs.myModalRef.hide();
-      if(bool){
-        this.Boot();
-        this.BackToTheFirstMenu();
-      } 
-    }
+      if(bool) this.Boot();
+    },
   }
 }
 </script>

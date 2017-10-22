@@ -13,15 +13,15 @@
         <b-col>
             <b-jumbotron header="Manuel" lead="Prenez le contrôle du robot!" >
               <p></p>
-              <b-btn v-if="this.GetConnectToRobot()" v-b-tooltip.hover.left="'Controlez le robot!'" variant="outline-success" v-on:click="Appear('boolManual')">Confirmer</b-btn>
-              <b-btn v-if="!this.GetConnectToRobot()" variant="outline-danger" disabled>Vous devez vous connecter au robot!</b-btn>
+              <b-btn v-if="this.GetConnectToRobot" v-b-tooltip.hover.left="'Controlez le robot!'" variant="outline-success" v-on:click="Appear('boolManual')">Confirmer</b-btn>
+              <b-btn v-if="!this.GetConnectToRobot" variant="outline-danger" disabled>Vous devez vous connecter au robot!</b-btn>
             </b-jumbotron>
         </b-col>
         <b-col>
             <b-jumbotron header="Automatique" lead="Parametrer le mode automatique" >
               <p></p>
-              <b-btn v-if="this.GetConnectToRobot()" v-b-tooltip.hover.left="'Parametrez notre robot!'" variant="outline-success" v-on:click="Appear('boolAuto')">Confirmer</b-btn>
-              <b-btn v-if="!this.GetConnectToRobot()" variant="outline-danger" disabled>Vous devez vous connecter au robot!</b-btn>
+              <b-btn v-if="this.GetConnectToRobot" v-b-tooltip.hover.left="'Parametrez notre robot!'" variant="outline-success" v-on:click="Appear('boolAuto')">Confirmer</b-btn>
+              <b-btn v-if="!this.GetConnectToRobot" variant="outline-danger" disabled>Vous devez vous connecter au robot!</b-btn>
             </b-jumbotron>
         </b-col>
       </b-row>
@@ -35,18 +35,15 @@ export default {
     return {
     }
   },
-  methods:{
+  computed:{
     ...mapGetters([
-      'Count',
-      'Manual',
-      'Auto',
       'GetConnectToRobot'
     ]),
+  },
+  methods:{
     ...mapMutations([
-      'Increment',
       'SetBoolAuto',
       'SetBoolManual'
-
     ]),
     Appear: function(field) {
       switch (field) {
@@ -59,8 +56,6 @@ export default {
         default:
           break;
       }
-      console.log('AUTO :'+this.Auto());
-      console.log('Manual :'+this.Manual());
     }
 
   }

@@ -1,9 +1,9 @@
 <template>
-  <b-container style="height:100%;" v-if="this.Manual() == true && this.Auto() == false">
+  <b-container style="height:100%;" v-if="this.Manual == true">
 Manual
 
   </b-container>
-  <b-container style="height:100%;" v-else-if="this.Manual() == false && this.Auto() == true">
+  <b-container style="height:100%;" v-else-if="this.Auto == true">
 
 auto
   </b-container>
@@ -23,17 +23,10 @@ export default {
     return {
     }
   },
-  methods:{
+  computed: {
     ...mapGetters([
-      'Count',
       'Manual',
       'Auto'
-    ]),
-    ...mapMutations([
-      'Increment',
-      'SetBoolAuto',
-      'SetBoolManual'
-
     ]),
   },
   components: {
