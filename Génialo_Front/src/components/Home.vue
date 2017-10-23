@@ -1,11 +1,9 @@
 <template>
   <b-container style="height:100%;" v-if="this.Manual == true">
-Manual
-
+    <manual></manual>
   </b-container>
   <b-container style="height:100%;" v-else-if="this.Auto == true">
-
-auto
+    <auto></auto>
   </b-container>
   <b-container style="height:100%;" v-else>
     <MenuToSelect></MenuToSelect>
@@ -17,6 +15,8 @@ auto
 <script>
 import { mapGetters, mapMutations} from 'vuex'
 import SelectMenu from './SelectMenu.vue'
+import Auto from './Auto.vue'
+import Manual from './Manual.vue'
 export default {
   name: 'Home',
   data () {
@@ -30,7 +30,9 @@ export default {
     ]),
   },
   components: {
-    'MenuToSelect': SelectMenu
+    'MenuToSelect': SelectMenu,
+    'auto': Auto,
+    'manual': Manual
   }
 }
 </script>
