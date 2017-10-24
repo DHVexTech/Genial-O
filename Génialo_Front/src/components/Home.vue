@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations} from 'vuex'
+import { mapGetters, mapMutations, mapActions} from 'vuex'
 import SelectMenu from './SelectMenu.vue'
 import Auto from './Auto.vue'
 import Manual from './Manual.vue'

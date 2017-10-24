@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations} from 'vuex'
+import { mapGetters, mapMutations, mapActions} from 'vuex'
 export default {
   name: 'Auto',
   data () {

@@ -13,22 +13,22 @@
         <b-col>
             <b-jumbotron header="Manuel" lead="Prenez le contrôle du robot!" >
               <p></p>
-              <b-btn v-if="this.GetConnectToRobot" v-b-tooltip.hover.left="'Controlez le robot!'" variant="outline-success" v-on:click="Appear('boolManual')">Confirmer</b-btn>
-              <b-btn v-if="!this.GetConnectToRobot" variant="outline-danger" disabled>Vous devez vous connecter au robot!</b-btn>
+              <b-btn v-if="this.ConnectToRobot" v-b-tooltip.hover.left="'Controlez le robot!'" variant="outline-success" v-on:click="Appear('boolManual')">Confirmer</b-btn>
+              <b-btn v-if="!this.ConnectToRobot" variant="outline-danger" disabled>Vous devez vous connecter au robot!</b-btn>
             </b-jumbotron>
         </b-col>
         <b-col>
             <b-jumbotron header="Automatique" lead="Parametrer le mode automatique" >
               <p></p>
-              <b-btn v-if="this.GetConnectToRobot" v-b-tooltip.hover.left="'Parametrez notre robot!'" variant="outline-success" v-on:click="Appear('boolAuto')">Confirmer</b-btn>
-              <b-btn v-if="!this.GetConnectToRobot" variant="outline-danger" disabled>Vous devez vous connecter au robot!</b-btn>
+              <b-btn v-if="this.ConnectToRobot" v-b-tooltip.hover.left="'Parametrez notre robot!'" variant="outline-success" v-on:click="Appear('boolAuto')">Confirmer</b-btn>
+              <b-btn v-if="!this.ConnectToRobot" variant="outline-danger" disabled>Vous devez vous connecter au robot!</b-btn>
             </b-jumbotron>
         </b-col>
       </b-row>
     </div>
 </template>
 <script>
-import { mapGetters, mapMutations} from 'vuex'
+import { mapGetters, mapMutations, mapActions} from 'vuex'
 export default {
   name: 'SelectMenu',
   data () {
@@ -37,11 +37,11 @@ export default {
   },
   computed:{
     ...mapGetters([
-      'GetConnectToRobot'
+      'ConnectToRobot'
     ]),
   },
   methods:{
-    ...mapMutations([
+    ...mapActions([
       'SetBoolAuto',
       'SetBoolManual'
     ]),

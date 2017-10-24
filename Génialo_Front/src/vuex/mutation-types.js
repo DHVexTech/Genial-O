@@ -1,5 +1,4 @@
-export const Increment = 'INCREMENT';
-export const SetBoolAuto = 'SETBOOLAUTO';
-export const SetBoolManual = 'SETBOOLMANUAL';
-export const SetConnectToRobot = 'SETCONNECTTOROBOT';
+export const SET_BOOL_AUTO = 'SET_BOOL_AUTO';
+export const SET_BOOL_MANUAL = 'SET_BOOL_MANUAL';
+export const SET_CONNECT_TO_ROBOT = 'SET_CONNECT_TO_ROBOT';
 

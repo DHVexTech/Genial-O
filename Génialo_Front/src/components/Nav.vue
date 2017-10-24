@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations} from 'vuex'
+import { mapGetters, mapMutations, mapActions} from 'vuex'
 export default {
   name: 'Nav',
   data () {
@@ -34,19 +34,20 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'GetConnectToRobot',
+      'ConnectToRobot',
       'Auto',
       'Manual'
     ]),
     UpdateText: function() {
-      if(this.GetConnectToRobot) return "Se déconnecter du robot"; else return "Se connecter au robot";
+      if(this.ConnectToRobot) return "Se déconnecter du robot"; else return "Se connecter au robot";
     }
   },
   methods:{
-    ...mapMutations([
+    ...mapActions([
       'SetConnectToRobot',
       'SetBoolAuto',
-      'SetBoolManual'
+      'SetBoolManual',
+      'SetTest'
     ]),
     BackToTheFirstMenu(){
       if(this.Auto) this.SetBoolAuto();
@@ -56,7 +57,7 @@ export default {
       this.SetConnectToRobot();
     },
     showModal() {
-      if(this.GetConnectToRobot)
+      if(this.ConnectToRobot)
         this.$refs.myModalRef.show();
       else 
         this.Boot();
