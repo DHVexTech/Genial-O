@@ -50,9 +50,9 @@ export default {
       'SetTest'
     ]),
     BackToTheFirstMenu(){
-      if(this.Auto) this.SetBoolAuto();
-      if(this.Manual) this.SetBoolManual();
-    },
+      this.SetConnectToRobot();
+      this.SetConnectToRobot();
+  },
     Boot() {
       this.SetConnectToRobot();
     },

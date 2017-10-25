@@ -3,10 +3,10 @@
         <b-row>
             <b-jumbotron header="Lancer les moteurs ou se connecter à la caméra">
                 <div>
-                    <b-btn class="mt-3" variant="outline-danger" v-if="motor" @click="motor = !motor">Eteindre les moteurs</b-btn>
-                    <b-btn class="mt-3" variant="outline-success" v-if="!motor" @click="motor = !motor">Lancer les moteurs</b-btn>
-                    <b-btn class="mt-3" variant="outline-danger" v-if="camera" @click="camera = !camera">Eteindre la caméra</b-btn>
-                    <b-btn class="mt-3" variant="outline-success" v-if="!camera" @click="camera = !camera">Lancer la caméra</b-btn>
+                    <b-btn class="mt-3" variant="outline-danger" v-if="Motor" @click="Launch('motor')">Eteindre les moteurs</b-btn>
+                    <b-btn class="mt-3" variant="outline-success" v-if="!Motor" @click="Launch('motor')">Lancer les moteurs</b-btn>
+                    <b-btn class="mt-3" variant="outline-danger" v-if="this.ConnectToCamera" @click="Launch('camera')">Eteindre la caméra</b-btn>
+                    <b-btn class="mt-3" variant="outline-success" v-if="!this.ConnectToCamera" @click="Launch('camera')">Lancer la caméra</b-btn>
                 </div>
                 <br>
                 <h5>
@@ -38,12 +38,32 @@ export default {
   name: 'Auto',
   data () {
     return {
-        motor: false,
-        camera : false,
         launchCartography : false
     }
   },
   computed: {
+    ...mapGetters([
+      'ConnectToCamera',
+      'Motor'
+    ]),
+  },
+  methods:{
+    ...mapActions([
+      'SetConnectToCamera',
+      'SetMotor'
+    ]),
+    Launch: function(string){
+        switch (string) {
+            case 'camera':
+            this.SetConnectToCamera();
+                break;
+            case 'motor':
+            this.SetMotor();
+                break;
+            default:
+                break;
+        }
+    }
   },
   components: {
   }
@@ -58,8 +78,6 @@ export default {
 h1, h2 {
   font-weight: normal;
 }
-
-
 a {
   color: #42b983;
 }

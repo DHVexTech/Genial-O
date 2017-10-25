@@ -1,4 +1,6 @@
 export const SET_BOOL_AUTO = 'SET_BOOL_AUTO';
 export const SET_BOOL_MANUAL = 'SET_BOOL_MANUAL';
 export const SET_CONNECT_TO_ROBOT = 'SET_CONNECT_TO_ROBOT';
+export const SET_CONNECT_TO_CAMERA = 'SET_CONNECT_TO_CAMERA';
+export const SET_MOTOR = 'SET_MOTOR';
 

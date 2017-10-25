@@ -6,7 +6,9 @@ export default {
   },
   actions:{
     SetBoolAuto (context) {
-        context.commit(types.SET_BOOL_AUTO);
+      if(context.rootGetters.ConnectToCamera) context.dispatch('SetConnectToCamera');
+      if(context.rootGetters.Motor) context.dispatch('SetMotor');
+      context.commit(types.SET_BOOL_AUTO);
     }
   },
   mutations: {

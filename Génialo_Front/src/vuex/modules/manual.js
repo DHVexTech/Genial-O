@@ -6,7 +6,9 @@ export default {
   },
   actions:{
     SetBoolManual (context) {
-        context.commit(types.SET_BOOL_MANUAL);
+      if(context.rootGetters.ConnectToCamera) context.dispatch('SetConnectToCamera');
+      if(context.rootGetters.Motor) context.dispatch('SetMotor');
+      context.commit(types.SET_BOOL_MANUAL);
     }
   },
   mutations: {

@@ -3,10 +3,10 @@
         <b-row>
             <b-jumbotron header="Lancer les moteurs ou se connecter à la caméra">
                 <div>
-                    <b-btn class="mt-3" variant="outline-danger" v-if="motor" @click="motor = !motor">Eteindre les moteurs</b-btn>
-                    <b-btn class="mt-3" variant="outline-success" v-if="!motor" @click="motor = !motor">Lancer les moteurs</b-btn>
-                    <b-btn class="mt-3" variant="outline-danger" v-if="camera" @click="camera = !camera">Eteindre la caméra</b-btn>
-                    <b-btn class="mt-3" variant="outline-success" v-if="!camera" @click="camera = !camera">Lancer la caméra</b-btn>
+                    <b-btn class="mt-3" variant="outline-danger" v-if="Motor" @click="Launch('motor')">Eteindre les moteurs</b-btn>
+                    <b-btn class="mt-3" variant="outline-success" v-if="!Motor" @click="Launch('motor')">Lancer les moteurs</b-btn>
+                    <b-btn class="mt-3" variant="outline-danger" v-if="this.ConnectToCamera" @click="Launch('camera')">Eteindre la caméra</b-btn>
+                    <b-btn class="mt-3" variant="outline-success" v-if="!this.ConnectToCamera" @click="Launch('camera')">Lancer la caméra</b-btn>
                 </div>
                 <br>
                 <h5>
@@ -15,6 +15,17 @@
                 <b-container class="conteneur">
                     <iframe style="background-color:black;">test</iframe>
                 </b-container>
+                <b-row>
+                    <b-col><img src="../assets/up-arrow.svg" v-bind:class="{ ClassKeyDown: up }" id="ArrowUp" width="100" alt="Un kiwi en SVG"></b-col>
+                </b-row>
+                <b-row>
+                    <b-col>
+                        <img src="../assets/left-arrow.svg" v-bind:class="{ ClassKeyDown: left }"  style="margin-bottom:200px;"  width="100" alt="Un kiwi en SVG">
+                        <img src="../assets/down-arrow.svg" v-bind:class="{ ClassKeyDown: down }" width="100" alt="Un kiwi en SVG">
+                        <img src="../assets/right-arrow.svg" v-bind:class="{ ClassKeyDown: right }" style="margin-bottom:200px;" width="100" alt="Un kiwi en SVG">
+                    </b-col>
+                </b-row>
+                
                 <br>
             </b-jumbotron>
         </b-row>
@@ -23,19 +34,57 @@
 
 <script>
 import { mapGetters, mapMutations, mapActions} from 'vuex'
+//import $ from 'jquery' 
 
 export default {
   name: 'Auto',
   data () {
     return {
-        motor: false,
-        camera : false,
-        test: {}
+        up: false,
+        left: false,
+        right: false,
+        down: false,
+        lastKeyTime: new Date().getTime(),
+        TimeAllowBetweenKeyDown: 1
     }
   },
-  computed: {
+  created() {
+      window.addEventListener("keydown",this.changecss);
   },
-  methods: {
+  beforeDestroy(){
+      window.removeEventListener("keydown",this.changecss);
+  },
+  computed: {
+    ...mapGetters([
+      'ConnectToCamera',
+      'Motor'
+    ]),
+  },
+  methods:{
+    ...mapActions([
+      'SetConnectToCamera',
+      'SetMotor'
+    ]),
+    changecss: function(event){
+        if(this.lastKeyTime+this.TimeAllowBetweenKeyDown < new Date().getTime() )
+        this.lastKeyTime = new Date().getTime();
+        if (event.which == '38') this.up = !this.up;
+        else if (event.which == '40') this.down = !this.down;
+        else if (event.which == '37') this.left = !this.left;
+        else if (event.which == '39') this.right = !this.right
+    },
+    Launch: function(string){
+        switch (string) {
+            case 'camera':
+            this.SetConnectToCamera();
+                break;
+            case 'motor':
+            this.SetMotor();
+                break;
+            default:
+                break;
+        }
+    }
   },
   components: {
   }
@@ -50,7 +99,9 @@ export default {
 h1, h2 {
   font-weight: normal;
 }
-
+.ClassKeyDown{
+    background-color: grey;
+}
 
 a {
   color: #42b983;

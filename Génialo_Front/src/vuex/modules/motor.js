@@ -2,27 +2,21 @@ import * as types from '../mutation-types'
 
 export default {
   state: {
-    connectToRobot: false,
+    motor: false,
   },
   actions:{
-      SetConnectToRobot (context) {
-          this.commit('SET_CONNECT_TO_ROBOT');
-          if(!context.state.connectToRobot) {
-              console.log(context);
-            if(context.rootGetters.Manual) context.dispatch('SetBoolManual');
-            if(context.rootGetters.Auto) context.dispatch('SetBoolAuto');
-          }
+      SetMotor (context) {
+        context.commit(types.SET_MOTOR);
       }
   },
   mutations: {
-    [types.SET_CONNECT_TO_ROBOT] (state){
-        state.connectToRobot = !state.connectToRobot;
-
-      }
+    [types.SET_MOTOR] (state){
+        state.motor = !state.motor;
+    }
   },
   getters: {
-    ConnectToRobot: (state) => {
-        return state.connectToRobot;
+    Motor: (state) => {
+        return state.motor;
     }
   }
 };
