@@ -33,13 +33,6 @@ namespace Web_Server_Genial_O
             {
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink();
-                // Setup WebpackDevMidleware for "Hot module replacement" while debugging
-                var options = new WebpackDevMiddlewareOptions() { HotModuleReplacement = true };
-                app.UseWebpackDevMiddleware(options);
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
             }
 
             app.UseStaticFiles();

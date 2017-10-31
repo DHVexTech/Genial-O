@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <AssemblyName>Web_Server_Genial_O</AssemblyName>
+    <RootNamespace>Web_Server_Genial_O</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
