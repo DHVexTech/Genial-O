@@ -1,0 +1,11 @@
+C:\Dev\Genial-O\Web_Server_Genial_O\Web_Server_Genial_O\bin\Debug\netcoreapp2.0\Web_Server_Genial_O.deps.json
+C:\Dev\Genial-O\Web_Server_Genial_O\Web_Server_Genial_O\bin\Debug\netcoreapp2.0\Web_Server_Genial_O.runtimeconfig.json
+C:\Dev\Genial-O\Web_Server_Genial_O\Web_Server_Genial_O\bin\Debug\netcoreapp2.0\Web_Server_Genial_O.runtimeconfig.dev.json
+C:\Dev\Genial-O\Web_Server_Genial_O\Web_Server_Genial_O\bin\Debug\netcoreapp2.0\Web_Server_Genial_O.dll
+C:\Dev\Genial-O\Web_Server_Genial_O\Web_Server_Genial_O\bin\Debug\netcoreapp2.0\Web_Server_Genial_O.pdb
+C:\Dev\Genial-O\Web_Server_Genial_O\Web_Server_Genial_O\obj\Debug\netcoreapp2.0\Web_Server_Genial_O.csprojResolveAssemblyReference.cache
+C:\Dev\Genial-O\Web_Server_Genial_O\Web_Server_Genial_O\obj\Debug\netcoreapp2.0\Web_Server_Genial_O.csproj.CoreCompileInputs.cache
+C:\Dev\Genial-O\Web_Server_Genial_O\Web_Server_Genial_O\obj\Debug\netcoreapp2.0\Web_Server_Genial_O.AssemblyInfoInputs.cache
+C:\Dev\Genial-O\Web_Server_Genial_O\Web_Server_Genial_O\obj\Debug\netcoreapp2.0\Web_Server_Genial_O.AssemblyInfo.cs
+C:\Dev\Genial-O\Web_Server_Genial_O\Web_Server_Genial_O\obj\Debug\netcoreapp2.0\Web_Server_Genial_O.dll
+C:\Dev\Genial-O\Web_Server_Genial_O\Web_Server_Genial_O\obj\Debug\netcoreapp2.0\Web_Server_Genial_O.pdb
