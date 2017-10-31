@@ -12,19 +12,25 @@
                 <h5>
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus, ex, perspiciatis esse officiis ratione sint iste alias nesciunt similique, in illo exercitationem corporis. Quam earum, at dignissimos omnis consequuntur odit! Explicabo nemo, labore voluptatibus cupiditate odio aut asperiores natus aliquam? Quos dolorem quaerat debitis soluta in pariatur delectus eius veritatis animi quis. Asperiores soluta quae veritatis, temporibus placeat fuga sed!Saepe laborum at sapiente enim, reprehenderit facilis ullam, quod commodi sequi esse tenetur. Possimus animi magni voluptas tempora nihil optio adipisci eius consectetur ipsum illum minus, aliquam totam repellat repellendus?Quo illo quia sunt in fugit aspernatur eos voluptatum. Blanditiis vero tempora exercitationem iure sequi rerum aperiam numquam laudantium, velit eligendi odit aspernatur voluptates alias debitis ipsam tempore perferendis porro.Placeat dolorem impedit sed iusto magni tempore excepturi voluptatem maiores id repellendus officia qui animi eaque nihil eveniet dolor quos, eius mollitia quam ad officiis? Aut minima vero ex nesciunt!
                 </h5>
-                <b-container class="conteneur">
-                    <iframe style="background-color:black;">test</iframe>
-                </b-container>
-                <b-row>
-                    <b-col><img src="../assets/up-arrow.svg" v-bind:class="{ ClassKeyDown: up }" id="ArrowUp" width="100" alt="Un kiwi en SVG"></b-col>
-                </b-row>
-                <b-row>
-                    <b-col>
-                        <img src="../assets/left-arrow.svg" v-bind:class="{ ClassKeyDown: left }"  style="margin-bottom:200px;"  width="100" alt="Un kiwi en SVG">
-                        <img src="../assets/down-arrow.svg" v-bind:class="{ ClassKeyDown: down }" width="100" alt="Un kiwi en SVG">
-                        <img src="../assets/right-arrow.svg" v-bind:class="{ ClassKeyDown: right }" style="margin-bottom:200px;" width="100" alt="Un kiwi en SVG">
-                    </b-col>
-                </b-row>
+                <div v-if="ConnectToCamera">
+                    <b-container class="conteneur">
+                        <iframe style="background-color:black;">test</iframe>
+                    </b-container>
+                </div>
+
+                <div v-if="Motor">
+                    <b-row>
+                        <b-col><img src="../assets/up-arrow.svg" v-bind:class="{ ClassKeyDown: up }" id="ArrowUp" width="100"></b-col>
+                    </b-row>
+                    <b-row>
+                        <b-col>
+                            <img src="../assets/left-arrow.svg" v-bind:class="{ ClassKeyDown: left }"  style="margin-bottom:200px;"  width="100">
+                            <img src="../assets/down-arrow.svg" v-bind:class="{ ClassKeyDown: down }" width="100">
+                            <img src="../assets/right-arrow.svg" v-bind:class="{ ClassKeyDown: right }" style="margin-bottom:200px;" width="100">
+                        </b-col>
+                    </b-row>
+                </div>
+
                 
                 <br>
             </b-jumbotron>
@@ -49,10 +55,10 @@ export default {
     }
   },
   created() {
-      window.addEventListener("keydown",this.changecss);
+      
   },
   beforeDestroy(){
-      window.removeEventListener("keydown",this.changecss);
+      
   },
   computed: {
     ...mapGetters([
@@ -68,18 +74,39 @@ export default {
     changecss: function(event){
         if(this.lastKeyTime+this.TimeAllowBetweenKeyDown < new Date().getTime() )
         this.lastKeyTime = new Date().getTime();
-        if (event.which == '38') this.up = !this.up;
-        else if (event.which == '40') this.down = !this.down;
-        else if (event.which == '37') this.left = !this.left;
-        else if (event.which == '39') this.right = !this.right
+        switch (event.which) {
+            case 90:
+                this.up = !this.up;
+                if(this.down) this.down = !this.down;
+                break;
+            case 83:
+                this.down = !this.down;
+                if(this.up) this.up = !this.up;
+                break;
+            case 81:
+                this.left = !this.left;
+                if(this.right) this.right = !this.right;
+                break;
+            case 68:
+                this.right = !this.right;
+                if(this.left) this.left = !this.left;
+                break;
+            default:
+                break;
+        }
+        if(this.left || this.right || this.up || this.down) { // Bloquer le défilement
+            return false;
+        }
     },
     Launch: function(string){
         switch (string) {
             case 'camera':
-            this.SetConnectToCamera();
+                this.SetConnectToCamera();
                 break;
             case 'motor':
-            this.SetMotor();
+                this.SetMotor();
+                if(this.Motor) window.addEventListener("keyup",this.changecss);
+                else window.removeEventListener("keyup",this.changecss);
                 break;
             default:
                 break;
