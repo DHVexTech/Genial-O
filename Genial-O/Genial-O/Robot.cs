@@ -29,17 +29,53 @@ namespace Genial_O
             _captorBack = new Captor(Pins.GPIO_PIN_A5, Pins.GPIO_PIN_D7);
         }
 
-        public Captor CaptorFront1 => _captorFront1;
+        public Captor CaptorFront1
+        {
+            get
+            {
+                return _captorFront1;
+            }
+        }
 
-        public Captor CaptorFront2 => _captorFront2;
+        public Captor CaptorFront2
+        {
+            get
+            {
+                return _captorFront2;
+            }
+        }
 
-        public Captor CaptorFront3 => _captorFront3;
+        public Captor CaptorFront3
+        {
+            get
+            {
+                return _captorFront3;
+            }
+        }
 
-        public Captor CaptorRight => _captorRight;
+        public Captor CaptorRight
+        {
+            get
+            {
+                return _captorRight;
+            }
+        }
 
-        public Captor CaptorLeft => _captorLeft;
+        public Captor CaptorLeft
+        {
+            get
+            {
+                return _captorLeft;
+            }
+        }
 
-        public Captor CaptorBack => _captorBack;
+        public Captor CaptorBack
+        {
+            get
+            {
+                return _captorBack;
+            }
+        }
                     
 
 
