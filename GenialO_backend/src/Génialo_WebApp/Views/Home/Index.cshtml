@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>genialo_front</title>
+    <link rel="shortcut icon" type="image/png" href="#" />
+
+</head>
+<body>
+    <div id="app"></div>
+
+    <environment names="Development">
+        <script type="text/javascript" src="http://localhost:8080/dist/Genialo_front.js"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script type="text/javascript" src="~/dist/Genialo_front.js"></script>
+    </environment>
+</body>
+</html>

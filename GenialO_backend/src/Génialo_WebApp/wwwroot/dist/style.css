@@ -1,0 +1,65 @@
+
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  vertical-align: middle;
+  color: #2c3e50;
+  height:100%;
+  width:100%;
+}
+html, body {
+  height:100%;
+  width:100%;
+}
+body {
+  background-image:url(http://localhost:8080/dist/fond_website.png?d3b0464971a8cb1b93fd2c6a61fca073);
+  background-repeat:repeat-y;
+  background-size: cover;
+}
+
+
+.display-3[data-v-fed36922]{
+  font-size: 2.5rem;
+}
+h1[data-v-fed36922], h2[data-v-fed36922] {
+  font-weight: normal;
+}
+a[data-v-fed36922] {
+  color: #42b983;
+}
+
+.display-3[data-v-2e92e1ea]{
+  font-size: 2.5rem;
+}
+h1[data-v-2e92e1ea], h2[data-v-2e92e1ea] {
+  font-weight: normal;
+}
+a[data-v-2e92e1ea] {
+  color: #42b983;
+}
+
+.display-3[data-v-195b6782]{
+  font-size: 2.5rem;
+}
+h1[data-v-195b6782], h2[data-v-195b6782] {
+  font-weight: normal;
+}
+a[data-v-195b6782] {
+  color: #42b983;
+}
+
+.display-3[data-v-6a8174d6]{
+  font-size: 2.5rem;
+}
+h1[data-v-6a8174d6], h2[data-v-6a8174d6] {
+  font-weight: normal;
+}
+.ClassKeyDown[data-v-6a8174d6]{
+    background-color: grey;
+}
+a[data-v-6a8174d6] {
+  color: #42b983;
+}
+
