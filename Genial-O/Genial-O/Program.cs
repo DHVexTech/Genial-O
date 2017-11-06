@@ -20,7 +20,7 @@ namespace Genial_O
 
             Thread serverThread = new Thread(() =>
             {
-                Server server = new Server();
+                Server server = new Server(robot);
                 server.ListenForRequest();
             });
 
@@ -31,8 +31,13 @@ namespace Genial_O
             // run forever
             while (true)
             {
-                robot.GoLeft();
-                Debug.Print(robot.MotorLeft.MotorPWM.DutyCycle.ToString());
+                robot.GoForward();
+                Debug.Print("Motor Left : ");
+                robot.MotorLeft.StatMotor();
+                Debug.Print("---------------------------------------------------");
+                Debug.Print("Motor Right : ");
+                robot.MotorRight.StatMotor();
+                Debug.Print("---------------------------------------------------");
                 Thread.Sleep(500);
                 led.Write(true); // turn on the LED
                 Thread.Sleep(250); // sleep for 250ms

@@ -19,7 +19,7 @@ namespace Genial_O
         public Robot()
         {
             _motorLeft = new Motor(PWMChannels.PWM_PIN_D9, Pins.GPIO_PIN_D1);
-            _motorRight= new Motor(PWMChannels.PWM_PIN_D10, Pins.GPIO_PIN_D0);
+            _motorRight= new Motor(PWMChannels.PWM_PIN_D11, Pins.GPIO_PIN_D12);
 
             _captorFront1 = new Captor(Pins.GPIO_PIN_A0, Pins.GPIO_PIN_D2, PositionSensor.FrontLeft);
             _captorFront2 = new Captor(Pins.GPIO_PIN_A1, Pins.GPIO_PIN_D3, PositionSensor.Front);
@@ -99,7 +99,6 @@ namespace Genial_O
             _motorLeft.MotorDirection = Direction.Backward;
             _motorRight.MotorDirection = Direction.Backward;
             StartMotor();
-
         }
 
         public void GoForward()
@@ -111,7 +110,6 @@ namespace Genial_O
 
         public void GoRight()
         {
-            _motorLeft.MotorPWM.DutyCycle = 0.8;
             _motorLeft.MotorDirection = Direction.Forward;
             _motorRight.MotorDirection = Direction.Backward;
             StartMotor();
@@ -119,7 +117,7 @@ namespace Genial_O
 
         public void GoLeft()
         {
-            _motorRight.MotorPWM.DutyCycle = 0.8;
+            //  _motorRight.MotorPWM.DutyCycle = 1;
             _motorLeft.MotorDirection = Direction.Forward;
             _motorRight.MotorDirection = Direction.Forward;
             StartMotor();
@@ -133,8 +131,6 @@ namespace Genial_O
 
         private void StopMotor()
         {
-            _motorRight.MotorPWM.DutyCycle = 0.4;
-            _motorLeft.MotorPWM.DutyCycle = 0.4;
             _motorLeft.MotorPWM.Stop();
             _motorRight.MotorPWM.Stop();
         }

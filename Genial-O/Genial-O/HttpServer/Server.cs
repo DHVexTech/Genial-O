@@ -12,9 +12,11 @@ namespace Genial_O.HttpServer
     {
         private Socket socket = null;
         private IPAddress _synchronizedClientIp;
+        private Robot _robot;
 
-        public Server()
+        public Server(Robot robot)
         {
+            _robot = robot;
             IPAddress ip = IPAddress.Parse("192.168.43.160");
             //Initialize Socket class
             socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -141,7 +143,38 @@ namespace Genial_O.HttpServer
                         response = "Client unsynchronized : " + tmp;
                         SendResponse(clientSocket, response);
                         break;
-
+                    case "Forward":
+                        if ((string)entry.Value == "true")
+                        {
+                            _robot.GoForward();
+                            response = "Robot going forward";
+                            SendResponse(clientSocket, response);
+                        }
+                        break;
+                    case "Backward":
+                        if ((string)entry.Value == "true")
+                        {
+                            _robot.GoBackward();
+                            response = "Robot going backward";
+                            SendResponse(clientSocket, response);
+                        }
+                        break;
+                    case "Right":
+                        if ((string)entry.Value == "true")
+                        {
+                            _robot.GoRight();
+                            response = "Robot turning right";
+                            SendResponse(clientSocket, response);
+                        }
+                        break;
+                    case "Left":
+                        if ((string)entry.Value == "true")
+                        {
+                            _robot.GoLeft();
+                            response = "Robot turning left";
+                            SendResponse(clientSocket, response);
+                        }
+                        break;
 
 
                     default:

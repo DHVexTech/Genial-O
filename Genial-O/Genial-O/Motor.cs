@@ -14,7 +14,6 @@ namespace Genial_O
         {
             _motor = new PWM(motor, 500, 0.8, false);
             _frontDirection = new OutputPort(motorFrontDirection, true);
-            _motor.DutyCycle = 0.4;
         }
 
         public PWM MotorPWM
@@ -47,6 +46,14 @@ namespace Genial_O
             }
         }
 
-
+        public void StatMotor()
+        {
+            Debug.Print("Duration : " + _motor.Duration.ToString());
+            Debug.Print("DutyCycle : " + _motor.DutyCycle.ToString());
+            Debug.Print("Frequency : " + _motor.Frequency.ToString());
+            Debug.Print("Period : " + _motor.Period.ToString());
+            Debug.Print("Pin : " + _motor.Pin.ToString());
+            Debug.Print("Scale : " + _motor.Scale.ToString());
+        }
     } 
 }
