@@ -34,6 +34,8 @@
   <Import Project="$(NetMfTargetsBaseDir)$(TargetFrameworkVersion)\CSharp.Targets" />
   <ItemGroup>
     <Compile Include="Captor.cs" />
+    <Compile Include="DetectObstacle.cs" />
+    <Compile Include="Direction.cs" />
     <Compile Include="HttpServer\Server.cs" />
     <Compile Include="HttpServer\StringExtensions.cs" />
     <Compile Include="HttpServer\Utility.cs" />

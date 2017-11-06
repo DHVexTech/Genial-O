@@ -16,8 +16,7 @@ namespace Genial_O
         {
             // write your code here
 
-            //Robot robot = new Robot();
-            //Captor captorFront = new Captor(Pins.GPIO_PIN_D4, Pins.GPIO_PIN_D5);
+            Robot robot = new Robot();
 
             Thread serverThread = new Thread(() =>
             {
@@ -32,20 +31,13 @@ namespace Genial_O
             // run forever
             while (true)
             {
-                //Debug.Print("Front 1 : " + robot.CaptorFront1.Ping().ToString());
-                //Debug.Print("Front 2 : " + robot.CaptorFront2.Ping().ToString());
-                //Debug.Print("Front 3 : " + robot.CaptorFront3.Ping().ToString());
-                //Debug.Print("Right : " + robot.CaptorRight.Ping().ToString());
-                //Debug.Print("Left : " + robot.CaptorLeft.Ping().ToString());
-                //Debug.Print("Back : " + robot.CaptorBack.Ping().ToString());
-
+                robot.GoLeft();
+                Debug.Print(robot.MotorLeft.MotorPWM.DutyCycle.ToString());
                 Thread.Sleep(500);
                 led.Write(true); // turn on the LED
                 Thread.Sleep(250); // sleep for 250ms
                 led.Write(false); // turn off the LED
                 Thread.Sleep(250); // sleep for 250ms
-
-
             }
         }
 
