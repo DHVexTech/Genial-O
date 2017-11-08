@@ -20,13 +20,13 @@
 
                 <div v-if="Motor">
                     <b-row>
-                        <b-col><img src="../assets/up-arrow.svg" v-bind:class="{ ClassKeyDown: up }" id="ArrowUp" width="100"></b-col>
+                        <b-col><img src="../assets/up-arrow.svg" v-bind:class="{ ClassKeyDown: up }" v-on:click="changeDirection('directionUp')" id="ArrowUp" width="100"></b-col>
                     </b-row>
                     <b-row>
                         <b-col>
-                            <img src="../assets/left-arrow.svg" v-bind:class="{ ClassKeyDown: left }"  style="margin-bottom:200px;"  width="100">
-                            <img src="../assets/down-arrow.svg" v-bind:class="{ ClassKeyDown: down }" width="100">
-                            <img src="../assets/right-arrow.svg" v-bind:class="{ ClassKeyDown: right }" style="margin-bottom:200px;" width="100">
+                            <img src="../assets/left-arrow.svg" v-bind:class="{ ClassKeyDown: left }" v-on:click="changeDirection('directionLeft')"  style="margin-bottom:200px;"  width="100">
+                            <img src="../assets/down-arrow.svg" v-bind:class="{ ClassKeyDown: down }" v-on:click="changeDirection('directionDown')" width="100">
+                            <img src="../assets/right-arrow.svg" v-bind:class="{ ClassKeyDown: right }" v-on:click="changeDirection('directionRight')" style="margin-bottom:200px;" width="100">
                         </b-col>
                     </b-row>
                 </div>
@@ -40,7 +40,12 @@
 
 <script>
 import { mapGetters, mapMutations, mapActions} from 'vuex'
-//import $ from 'jquery' 
+import $ from 'jquery' 
+
+const DirectionUp = 'directionUp';
+const DirectionDown = 'directionDown';
+const DirectionLeft = 'directionLeft';
+const DirectionRight = 'directionRight';
 
 export default {
   name: 'Auto',
@@ -71,23 +76,31 @@ export default {
       'SetConnectToCamera',
       'SetMotor'
     ]),
-    changecss: function(event){
+    ManageKey: function(event){
+        switch (event.which){
+            case 90: return this.changeDirection(DirectionUp);
+            case 83:  return this.changeDirection(DirectionDown);
+            case 81: return this.changeDirection(DirectionLeft);
+            case 68: return this.changeDirection(DirectionRight);
+        }
+    },
+    changeDirection: function(direction){
         if(this.lastKeyTime+this.TimeAllowBetweenKeyDown < new Date().getTime() )
         this.lastKeyTime = new Date().getTime();
-        switch (event.which) {
-            case 90:
+        switch (direction) {
+            case DirectionUp:
                 this.up = !this.up;
                 if(this.down) this.down = !this.down;
                 break;
-            case 83:
+            case DirectionDown:
                 this.down = !this.down;
                 if(this.up) this.up = !this.up;
                 break;
-            case 81:
+            case DirectionLeft:
                 this.left = !this.left;
                 if(this.right) this.right = !this.right;
                 break;
-            case 68:
+            case DirectionRight:
                 this.right = !this.right;
                 if(this.left) this.left = !this.left;
                 break;
@@ -105,8 +118,8 @@ export default {
                 break;
             case 'motor':
                 this.SetMotor();
-                if(this.Motor) window.addEventListener("keyup",this.changecss);
-                else window.removeEventListener("keyup",this.changecss);
+                if(this.Motor) window.addEventListener("keyup",this.ManageKey);
+                else window.removeEventListener("keyup",this.ManageKey);
                 break;
             default:
                 break;

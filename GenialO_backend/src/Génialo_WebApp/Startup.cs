@@ -7,7 +7,7 @@ using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 
-namespace ITI.PrimarySchool.WebApp
+namespace GenialO.WebApp
 {
     public class Startup
     {

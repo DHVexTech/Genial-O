@@ -2,10 +2,10 @@
   <b-navbar toggleable="md" type="light" style="background-color:#E9ECEF;margin-bottom:50px;-webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);-moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);">
     <b-nav-toggle target="nav_collapse"></b-nav-toggle>
       <b-collapse is-nav id="nav_collapse">
-        <b-nav is-nav-bar>
+        <b-navbar-nav>
           <b-nav-item @click="BackToTheFirstMenu()">Génial-O</b-nav-item>
           <b-nav-item @click="showModal">{{this.UpdateText}}</b-nav-item>
-        </b-nav>
+        </b-navbar-nav>
     </b-collapse>
       <div>
         <b-modal ref="myModalRef" hide-footer title="Êtes-vous vraiment sur ?">
