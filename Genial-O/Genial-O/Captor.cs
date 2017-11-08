@@ -5,6 +5,16 @@ using System.Threading;
 
 namespace Genial_O
 {
+    public enum PositionSensor
+    {
+        Front,
+        FrontLeft,
+        FrontRight,
+        Left,
+        Right,
+        Back
+    }
+
     public class Captor
     {
         private OutputPort portOut;
@@ -12,15 +22,20 @@ namespace Genial_O
         private long beginTick;
         private long endTick;
         private long minTicks = 0;
+        private PositionSensor _positionSensor;
 
-        public Captor(Cpu.Pin pinTrig, Cpu.Pin pinEcho)
+        public Captor(Cpu.Pin pinTrig, Cpu.Pin pinEcho, PositionSensor position)
         {
+            _positionSensor = position;
             portOut = new OutputPort(pinTrig, false);
             interIn = new InterruptPort(pinEcho, false, Port.ResistorMode.Disabled, Port.InterruptMode.InterruptEdgeLow);
 
             interIn.OnInterrupt += new NativeEventHandler(interIn_OnInterrupt);
             minTicks = 4000L;
         }
+
+        public PositionSensor PositionSensor => _positionSensor;
+        
 
         public long Ping()
         {
