@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -15,6 +16,13 @@
 
     <environment names="Staging,Production">
         <script type="text/javascript" src="~/dist/Genialo_front.js"></script>
+    </environment>
+
+    <environment names="Development">
+        <link rel="stylesheet" type="text/css" media="screen" href="http://localhost:8080/dist/style.css" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" type="text/css" media="screen" href="~/dist/style.css" />
     </environment>
 </body>
 </html>

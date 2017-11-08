@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace ITI.PrimarySchool.WebApp.Controllers
+namespace GenialO.Controllers
 {
     public class HomeController : Controller
     {
