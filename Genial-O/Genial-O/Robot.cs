@@ -112,7 +112,7 @@ namespace Genial_O
         {
             _motorLeft.MotorDirection = Direction.Forward;
             _motorRight.MotorDirection = Direction.Forward;
-            _motorRight.MotorPWM.DutyCycle = 0.8;
+            _motorLeft.MotorPWM.DutyCycle = 0.6;
             StartMotor();
         }
 
@@ -120,7 +120,7 @@ namespace Genial_O
         {
             _motorLeft.MotorDirection = Direction.Forward;
             _motorRight.MotorDirection = Direction.Forward;
-            _motorLeft.MotorPWM.DutyCycle = 0.8;
+            _motorRight.MotorPWM.DutyCycle = 0.6;
             StartMotor();
         }
 
@@ -128,7 +128,7 @@ namespace Genial_O
         {
             _motorLeft.MotorDirection = Direction.Backward;
             _motorRight.MotorDirection = Direction.Backward;
-            _motorRight.MotorPWM.DutyCycle = 0.8;
+            _motorRight.MotorPWM.DutyCycle = 0.6;
             StartMotor();
         }
 
@@ -136,7 +136,7 @@ namespace Genial_O
         {
             _motorLeft.MotorDirection = Direction.Backward;
             _motorRight.MotorDirection = Direction.Backward;
-            _motorLeft.MotorPWM.DutyCycle = 0.8;
+            _motorLeft.MotorPWM.DutyCycle = 0.6;
             StartMotor();
         }
 

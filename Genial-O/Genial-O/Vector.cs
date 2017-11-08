@@ -1,0 +1,41 @@
+using System;
+using Microsoft.SPOT;
+
+namespace Genial_O
+{
+    class Vector
+    {
+        int x;
+        int y;
+
+        public Vector(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+
+        public int X
+        {
+            get
+            {
+                return this.x;
+            }
+            set
+            {
+                this.x = value;
+            }
+        }
+
+        public int Y
+        {
+            get
+            {
+                return this.y;
+            }
+            set
+            {
+                this.y = value;
+            }
+        }
+    }
+}

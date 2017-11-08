@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Microsoft.SPOT;
 
 namespace Genial_O
@@ -6,6 +7,7 @@ namespace Genial_O
     public class DetectObstacle
     {
         private readonly Robot _robot;
+        private ArrayList obstacles;
 
         public DetectObstacle(Robot robot)
         {
@@ -20,6 +22,7 @@ namespace Genial_O
             {
                 if(CheckValue(_robot.CaptorFront2))
                 {
+                    Obstacle obstacle = new Obstacle(Guid.NewGuid(), new Vector(0,0));
                     if(!CheckValue(_robot.CaptorFront1))
                     {
                         // Go Left

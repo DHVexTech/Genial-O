@@ -31,7 +31,9 @@ namespace Genial_O
             // run forever
             while (true)
             {
-                robot.GoForward();
+                robot.GoBackRight();
+                
+
                 Debug.Print("Motor Left : ");
                 robot.MotorLeft.StatMotor();
                 Debug.Print("---------------------------------------------------");
