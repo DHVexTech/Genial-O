@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace ITI.PrimarySchool.WebApp
 {
@@ -26,11 +29,16 @@ namespace ITI.PrimarySchool.WebApp
             
 
             services.AddMvc();
-            
+
+            services.AddSingleton<HttpClient>();
         }
 
-        public void Configure( IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory )
+        public void Configure( IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, HttpClient httpClient )
         {
+            httpClient.BaseAddress = new Uri("http://localhost:7000/");
+            httpClient.DefaultRequestHeaders.Accept.Clear();
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
             loggerFactory.AddConsole();
 
             if( env.IsDevelopment() )
