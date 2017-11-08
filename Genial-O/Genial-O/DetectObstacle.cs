@@ -20,7 +20,14 @@ namespace Genial_O
             {
                 if(CheckValue(_robot.CaptorFront2))
                 {
-
+                    if(!CheckValue(_robot.CaptorFront1))
+                    {
+                        // Go Left
+                    }
+                    else if (!CheckValue(_robot.CaptorFront3))
+                    {
+                        // Go Right
+                    }
                 }
             }
         }

@@ -111,15 +111,32 @@ namespace Genial_O
         public void GoRight()
         {
             _motorLeft.MotorDirection = Direction.Forward;
-            _motorRight.MotorDirection = Direction.Backward;
+            _motorRight.MotorDirection = Direction.Forward;
+            _motorRight.MotorPWM.DutyCycle = 0.8;
             StartMotor();
         }
 
         public void GoLeft()
         {
-            //  _motorRight.MotorPWM.DutyCycle = 1;
             _motorLeft.MotorDirection = Direction.Forward;
             _motorRight.MotorDirection = Direction.Forward;
+            _motorLeft.MotorPWM.DutyCycle = 0.8;
+            StartMotor();
+        }
+
+        public void GoBackLeft()
+        {
+            _motorLeft.MotorDirection = Direction.Backward;
+            _motorRight.MotorDirection = Direction.Backward;
+            _motorRight.MotorPWM.DutyCycle = 0.8;
+            StartMotor();
+        }
+
+        public void GoBackRight()
+        {
+            _motorLeft.MotorDirection = Direction.Backward;
+            _motorRight.MotorDirection = Direction.Backward;
+            _motorLeft.MotorPWM.DutyCycle = 0.8;
             StartMotor();
         }
 

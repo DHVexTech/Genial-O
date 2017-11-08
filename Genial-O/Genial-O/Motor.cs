@@ -12,10 +12,11 @@ namespace Genial_O
 
         public Motor(Cpu.PWMChannel motor, Cpu.Pin motorFrontDirection)
         {
-            _motor = new PWM(motor, 500, 0.8, false);
-            _frontDirection = new OutputPort(motorFrontDirection, true);
+            _motor = new PWM(motor, 500, 0.8, true);
+            _frontDirection = new OutputPort(motorFrontDirection, false);
+            _motor.DutyCycle = 0.4;
         }
-
+        
         public PWM MotorPWM
         {
             get
