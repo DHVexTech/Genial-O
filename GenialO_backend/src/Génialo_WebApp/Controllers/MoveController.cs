@@ -18,7 +18,7 @@ namespace GenialO_WebApp.Controllers
         [HttpGet]
         public async Task<string> RightAsync()
         {
-            HttpResponseMessage response = await _httpClient.GetAsync("Move/right");
+            HttpResponseMessage response = await _httpClient.GetAsync("move/right");
 
             if(response.IsSuccessStatusCode)
             {
@@ -27,9 +27,9 @@ namespace GenialO_WebApp.Controllers
             return move;
         }
 
-        public async Task<string> LeftAsync(bool value)
+        public async Task<string> LeftAsync()
         {
-            HttpResponseMessage response = await _httpClient.GetAsync("Move/left?value=" + value);
+            HttpResponseMessage response = await _httpClient.GetAsync("move/left");
 
             if (response.IsSuccessStatusCode)
             {
@@ -38,9 +38,9 @@ namespace GenialO_WebApp.Controllers
             return move;
         }
 
-        public async Task<string> FrontAsync(bool value)
+        public async Task<string> FrontAsync()
         {
-            HttpResponseMessage response = await _httpClient.GetAsync("Move/front?value=" + value);
+            HttpResponseMessage response = await _httpClient.GetAsync("move/front");
 
             if (response.IsSuccessStatusCode)
             {
@@ -49,9 +49,9 @@ namespace GenialO_WebApp.Controllers
             return move;
         }
 
-        public async Task<string> BackAsync(bool value)
+        public async Task<string> BackAsync()
         {
-            HttpResponseMessage response = await _httpClient.GetAsync("Move/back?value=" + value);
+            HttpResponseMessage response = await _httpClient.GetAsync("move/back");
 
             if (response.IsSuccessStatusCode)
             {
