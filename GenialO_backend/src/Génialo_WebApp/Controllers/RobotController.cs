@@ -15,7 +15,7 @@ namespace GenialO_WebApp.Controllers
             _httpClient = httpClient;
         }
 
-        [HttpGet]
+        [HttpGet("Connexion")]
         public async Task<string> ConnnexionAsync()
         {
             HttpResponseMessage response = await _httpClient.GetAsync("robot/connexion");
@@ -27,7 +27,7 @@ namespace GenialO_WebApp.Controllers
             return move;
         }
 
-        [HttpGet]
+        [HttpGet("Engine")]
         public async Task<string> EngineAsync()
         {
             HttpResponseMessage response = await _httpClient.GetAsync("robot/engine");
@@ -39,7 +39,7 @@ namespace GenialO_WebApp.Controllers
             return move;
         }
 
-        [HttpGet]
+        [HttpGet("Synchronize")]
         public async Task<string> SynchronizeAsync()
         {
             HttpResponseMessage response = await _httpClient.GetAsync("robot/synchronize");
@@ -51,7 +51,7 @@ namespace GenialO_WebApp.Controllers
             return move;
         }
 
-        [HttpGet]
+        [HttpGet("Right")]
         public async Task<string> RightAsync()
         {
             HttpResponseMessage response = await _httpClient.GetAsync("robot/right");
@@ -63,6 +63,7 @@ namespace GenialO_WebApp.Controllers
             return move;
         }
 
+        [HttpGet("Left")]
         public async Task<string> LeftAsync()
         {
             HttpResponseMessage response = await _httpClient.GetAsync("robot/left");
@@ -74,6 +75,7 @@ namespace GenialO_WebApp.Controllers
             return move;
         }
 
+        [HttpGet("Front")]
         public async Task<string> FrontAsync()
         {
             HttpResponseMessage response = await _httpClient.GetAsync("robot/front");
@@ -85,6 +87,7 @@ namespace GenialO_WebApp.Controllers
             return move;
         }
 
+        [HttpGet("Back")]
         public async Task<string> BackAsync()
         {
             HttpResponseMessage response = await _httpClient.GetAsync("robot/back");

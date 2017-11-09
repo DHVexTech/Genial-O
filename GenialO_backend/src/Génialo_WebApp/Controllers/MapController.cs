@@ -15,7 +15,7 @@ namespace GenialO_WebApp.Controllers
             _httpClient = httpClient;
         }
 
-        [HttpGet]
+        [HttpGet("Mapping")]
         public async Task<string> MappingAsync()
         {
             HttpResponseMessage response = await _httpClient.GetAsync("map/mapping");
@@ -27,7 +27,7 @@ namespace GenialO_WebApp.Controllers
             return map;
         }
 
-        [HttpGet]
+        [HttpGet("GiveAll")]
         public async Task<string> GiveAllAsync()
         {
             HttpResponseMessage response = await _httpClient.GetAsync("map/giveAll");
@@ -39,7 +39,7 @@ namespace GenialO_WebApp.Controllers
             return map;
         }
 
-        [HttpGet]
+        [HttpGet("Choose")]
         public async Task<string> ChooseAsync()
         {
             HttpResponseMessage response = await _httpClient.GetAsync("map/choose");
@@ -51,7 +51,7 @@ namespace GenialO_WebApp.Controllers
             return map;
         }
 
-        [HttpGet]
+        [HttpGet("Delete")]
         public async Task<string> DeleteAsync()
         {
             HttpResponseMessage response = await _httpClient.GetAsync("map/delete");
@@ -63,7 +63,7 @@ namespace GenialO_WebApp.Controllers
             return map;
         }
 
-        [HttpGet]
+        [HttpGet("Point")]
         public async Task<string> PointAsync()
         {
             HttpResponseMessage response = await _httpClient.GetAsync("map/point");
@@ -75,7 +75,7 @@ namespace GenialO_WebApp.Controllers
             return map;
         }
 
-        [HttpGet]
+        [HttpGet("GoTo")]
         public async Task<string> GoToAsync()
         {
             HttpResponseMessage response = await _httpClient.GetAsync("map/goTo");
